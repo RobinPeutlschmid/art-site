@@ -1,5 +1,5 @@
 theme = "blowfish"
-baseURL = "https://robinpeutlschmid.cz/"
+baseURL = "https://www.robinpeutlschmid.cz/"
 defaultContentLanguage = "en"
 enableRobotsTXT = true
 summaryLength = 0
