@@ -2,7 +2,7 @@ disabled = false
 locale = "en"
 label = "English"
 weight = 1
-title = "Blowfish"
+title = "Robin Peutlschmid"
 
 [params]
   displayName = "EN"
@@ -17,11 +17,11 @@ title = "Blowfish"
 [params.author]
    name = "Robin Peutlschmid"
    email = "rpeutlschmid@gmail.com"
-   image = "img/profile.jpg"
+   image = "img/profile.png"
    imageQuality = 96
    headline = "Filmmaker, 3D artist"
    bio = "i create stuff"
-   links = [
+#   links = [
 #     { email = "mailto:hello@your_domain.com" },
 #     { link = "https://link-to-some-website.com/" },
 #     { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
