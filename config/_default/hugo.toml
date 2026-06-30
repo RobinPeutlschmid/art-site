@@ -1,0 +1,21 @@
+theme = "blowfish"
+baseURL = "https://robinpeutlschmid.cz/"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+summaryLength = 0
+
+[pagination]
+  pagerSize = 10
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
+  world = "worlds"
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
