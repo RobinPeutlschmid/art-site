@@ -17,13 +17,12 @@ title = "Robin Peutlschmid"
 
 [params.author]
    name = "Robin Peutlschmid"
-   email = "rpeutlschmid@gmail.com"
    image = "img/profile.png"
    imageQuality = 96
    headline = "Filmmaker, 3D artist"
    bio = "i create stuff"
 #   links = [
-#     { email = "mailto:hello@your_domain.com" },
+   email = "rpeutlschmid@gmail.com"
 #     { link = "https://link-to-some-website.com/" },
 #     { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
 #     { apple = "https://www.apple.com" },
