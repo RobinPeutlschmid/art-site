@@ -10,6 +10,7 @@ rtl = false
 dateFormat = "2 January 2006"
 description = "Filmmaker, 3D artist"
 
+
 [languages.en.params.author]
 name = "Robin Peutlschmid"
 email = "rpeutlschmid@gmail.com"
