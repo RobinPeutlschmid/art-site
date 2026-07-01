@@ -47,13 +47,13 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
 # metaDescriptionOrder = ["summary", "description", "site"] # Controls the fallback order for the HTML meta description. Valid values are "summary", "description", and "site".
 
 [header]
-  layout = "basic" # valid options: basic, fixed, fixed-fill, fixed-gradient, fixed-fill-blur
+  layout = "fixed-fill-blur" # valid options: basic, fixed, fixed-fill, fixed-gradient, fixed-fill-blur
 
 [footer]
-  showMenu = true
+  showMenu = false
   showCopyright = true
-  showThemeAttribution = true
-  showAppearanceSwitcher = true
+  showThemeAttribution = false
+  showAppearanceSwitcher = false
   showScrollToTop = true
 
 [homepage]
@@ -61,8 +61,8 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
   #homepageImage = "IMAGE.jpg" # used in: hero, and card
   showRecent = true
   showRecentItems = 6
-  showMoreLink = false
-  showMoreLinkDest = "/posts/"
+  showMoreLink = true
+  showMoreLinkDest = "/journal/"
   cardView = true
   cardViewScreenWidth = false
   layoutBackgroundBlur = false # only used when layout equals background
