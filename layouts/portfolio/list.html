@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <header>
+    <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
+  </header>
+
+  {{ with .Content }}
+    <section class="prose mt-1 mb-10 max-w-full dark:prose-invert">
+      {{ . }}
+    </section>
+  {{ end }}
+
+  {{ partial "portfolio/grid.html" .Sections.ByWeight }}
+{{ end }}

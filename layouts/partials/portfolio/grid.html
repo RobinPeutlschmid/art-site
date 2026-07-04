@@ -1,0 +1,7 @@
+{{/* Large-card grid shared by the portfolio root and category index pages.
+     Expects a Pages collection (already sorted) in context. */}}
+<section class="grid w-full gap-6 sm:grid-cols-2">
+  {{ range . }}
+    {{ partial "portfolio/featured-card.html" . }}
+  {{ end }}
+</section>

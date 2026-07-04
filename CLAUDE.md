@@ -39,6 +39,15 @@ Blowfish (https://blowfish.page). Installed as git submodule at themes/blowfish.
 - draft: true = local preview only, draft: false = published on next push
 - featureimage field sets the card thumbnail on list pages
 
+## Portfolio layout
+- Custom templates (not theme default): `layouts/portfolio/list.html` (root — 4 category cards) and `layouts/portfolio/category.html` (per-category — large entry cards), sharing `layouts/partials/portfolio/{featured-card,grid}.html`
+- `content/portfolio/_index.md` is the root; `content/portfolio/{films,vfx,blender,gamedev}/_index.md` are category pages
+- Each category `_index.md` needs `layout: category` in front matter to pick up category.html (type stays "portfolio" for all descendants, so `layout:` is what selects the template)
+- Category order on the root page is controlled by `weight` on each category's `_index.md` (films=10, vfx=20, blender=30, gamedev=40)
+- Case study entries (e.g. `content/portfolio/films/odraz/`) are plain page bundles with no layout override — they use the theme's default `_default/single.html`
+- Entry order within a category is controlled by `weight` on each entry (lower = shown first) — use this to put strongest work up top
+- `description` front matter is used for the card blurb (root cards and category entry cards); falls back to `.Summary` if omitted
+
 ## Workflow
 1. Write in Obsidian on Windows (E:\Dokumenty\PersonalProjects\Obsidian\Robin\Art Journal)
 2. Run ./sync-journal.sh to sync, commit, and push — GitHub Actions deploys automatically

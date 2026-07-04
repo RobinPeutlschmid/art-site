@@ -1,0 +1,23 @@
+{{/* Selected via front matter: layout: category */}}
+{{ define "main" }}
+  <header>
+    {{ if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}
+      {{ partial "breadcrumbs.html" . }}
+    {{ end }}
+    <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
+  </header>
+
+  {{ with .Content }}
+    <section class="prose mt-1 mb-10 max-w-full dark:prose-invert">
+      {{ . }}
+    </section>
+  {{ end }}
+
+  {{ if gt .Pages 0 }}
+    {{ partial "portfolio/grid.html" .Pages.ByWeight }}
+  {{ else }}
+    <section class="mt-10 prose dark:prose-invert">
+      <p class="border-t py-8"><em>{{ i18n "list.no_articles" | emojify }}</em></p>
+    </section>
+  {{ end }}
+{{ end }}

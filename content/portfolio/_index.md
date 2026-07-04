@@ -2,7 +2,6 @@
 title: "Portfolio"
 cascade:
   showDate: false
-  list:
-    groupByYear: false
-    cardViewScreenWidth: true
 ---
+A selection of films, VFX, 3D art, and games I've worked on.
+
