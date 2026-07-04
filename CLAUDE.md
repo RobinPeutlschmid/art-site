@@ -7,7 +7,7 @@ Live at: https://www.robinpeutlschmid.cz
 ## Project structure
 - `config/_default/` — all site configuration (hugo.toml, languages.en.toml, menus.en.toml, params.toml, markup.toml)
 - `content/journal/` — art journal entries as page bundles (symlinked from Obsidian vault on E: drive, synced via sync-journal.sh)
-- `content/portfolio/` — portfolio entries divided into films/, vfx/, blender/, gamedev/
+- `content/portfolio/` — portfolio entries divided into films/, vfx/, blender/, gamedev/ (symlinked from Obsidian vault on E: drive, synced via sync-portfolio.sh)
 - `content/about.md` — about page
 - `assets/img/` — site-level images (profile photo etc.)
 - `layouts/` — custom template overrides and shortcodes
@@ -49,9 +49,11 @@ Blowfish (https://blowfish.page). Installed as git submodule at themes/blowfish.
 - `description` front matter is used for the card blurb (root cards and category entry cards); falls back to `.Summary` if omitted
 
 ## Workflow
-1. Write in Obsidian on Windows (E:\Dokumenty\PersonalProjects\Obsidian\Robin\Art Journal)
+1. Write journal entries in Obsidian on Windows (E:\Dokumenty\PersonalProjects\Obsidian\Robin\Art Journal)
 2. Run ./sync-journal.sh to sync, commit, and push — GitHub Actions deploys automatically
-3. For config/layout changes: edit directly in WSL, git add/commit/push manually
+3. Write portfolio entries in Obsidian on Windows (E:\Dokumenty\PersonalProjects\Obsidian\Robin\Portfolio), one folder per entry inside films/, vfx/, blender/, or gamedev/ — use the _Templates/portfolio_entry.md template (title, description, featureimage, weight, draft)
+4. Run ./sync-portfolio.sh to sync, commit, and push
+5. For config/layout changes, or editing category framing text (content/portfolio/*/_index.md): edit directly in WSL, git add/commit/push manually
 
 ## Git
 - Remote: https://github.com/RobinPeutlschmid/art-site
@@ -66,3 +68,4 @@ Blowfish (https://blowfish.page). Installed as git submodule at themes/blowfish.
 - Theme updates via: git submodule update --remote --merge
 - Do not run apt install hugo — the apt version is outdated and not Extended
 - The sync-journal.sh script excludes _Templates/ and .obsidian/ from rsync
+- The sync-portfolio.sh script additionally excludes _index.md from rsync, so it never deletes the category index pages (content/portfolio/*/_index.md) — those are edited directly in the repo, not from Obsidian
