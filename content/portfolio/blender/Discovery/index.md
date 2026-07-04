@@ -1,7 +1,7 @@
 ---
 title: Discovery
 description: What's hidden underneath the surface?
-featureimage: cover.jpg
+featureimage:
 weight: 10
 draft: false
 ---
