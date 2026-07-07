@@ -9,5 +9,7 @@
     </section>
   {{ end }}
 
-  {{ partial "portfolio/grid.html" .Sections.ByWeight }}
+  {{ $pinned := partial "portfolio/resolve-pinned.html" . }}
+  {{ $sections := .Sections.ByWeight | complement $pinned }}
+  {{ partial "portfolio/grid.html" ($pinned | append $sections) }}
 {{ end }}

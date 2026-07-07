@@ -13,8 +13,12 @@
     </section>
   {{ end }}
 
-  {{ if gt .Pages 0 }}
-    {{ partial "portfolio/grid.html" .Pages.ByWeight }}
+  {{ $pinned := partial "portfolio/resolve-pinned.html" . }}
+  {{/* Drop pins that are also normal children of this category to avoid dupes. */}}
+  {{ $entries := .Pages.ByWeight | complement $pinned }}
+  {{ $all := $pinned | append $entries }}
+  {{ if gt (len $all) 0 }}
+    {{ partial "portfolio/grid.html" $all }}
   {{ else }}
     <section class="mt-10 prose dark:prose-invert">
       <p class="border-t py-8"><em>{{ i18n "list.no_articles" | emojify }}</em></p>

@@ -1,37 +1,7 @@
 {{/* Large image-forward card used by the portfolio root (category cards) and
      category index pages (entry cards). Expects a Page in context. */}}
 {{ $page := . }}
-{{ $disableImageOptimization := site.Store.Get "disableImageOptimization" }}
-{{ $featured := "" }}
-{{ $featuredURL := "" }}
-
-{{ with $page.Params.featureimage }}
-  {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
-    {{ if site.Params.hotlinkFeatureImage }}
-      {{ $featuredURL = . }}
-    {{ else }}
-      {{ $featured = resources.GetRemote . }}
-    {{ end }}
-  {{ else }}
-    {{ $featured = resources.Get . }}
-  {{ end }}
-{{ end }}
-
-{{ if not (or $featured $featuredURL) }}
-  {{ $images := $page.Resources.ByType "image" }}
-  {{ range slice "*feature*" "*cover*" "*thumbnail*" }}
-    {{ if not $featured }}{{ $featured = $images.GetMatch . }}{{ end }}
-  {{ end }}
-{{ end }}
-
-{{ if not $featuredURL }}
-  {{ with $featured }}
-    {{ $featuredURL = .RelPermalink }}
-    {{ if not (or $disableImageOptimization (eq .MediaType.SubType "svg")) }}
-      {{ $featuredURL = (.Resize "1200x").RelPermalink }}
-    {{ end }}
-  {{ end }}
-{{ end }}
+{{ $featuredURL := partial "portfolio/feature-image.html" $page }}
 
 <article class="group relative overflow-hidden rounded-xl border border-neutral-300 dark:border-neutral-600">
   <div class="thumbnail_card relative overflow-hidden bg-neutral-100 dark:bg-neutral-800" style="--thumbnail-aspect-ratio: 1.6">

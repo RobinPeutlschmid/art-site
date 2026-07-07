@@ -1,0 +1,62 @@
+{{/* Resolves a display image URL for a portfolio card.
+     Expects a Page in context; returns a URL string ("" if none found).
+
+     Resolution order:
+       1. the page's `featureimage` front-matter field (remote or bundle-local)
+       2. a bundle image named *feature* / *cover* / *thumbnail*
+       3. the first image in the page bundle
+       4. (sections only) the resolved image of the top child entry by weight —
+          lets category cards inherit their strongest entry's art when the
+          category folder has no cover image of its own.
+
+     Drop a `cover.jpg` into a category folder to give it a dedicated cover:
+     it is picked up by the *cover* match in step 2 and overrides the borrow. */}}
+{{ $page := . }}
+{{ $disableImageOptimization := site.Store.Get "disableImageOptimization" }}
+{{ $featured := "" }}
+{{ $featuredURL := "" }}
+
+{{ with $page.Params.featureimage }}
+  {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+    {{ if site.Params.hotlinkFeatureImage }}
+      {{ $featuredURL = . }}
+    {{ else }}
+      {{ $featured = resources.GetRemote . }}
+    {{ end }}
+  {{ else }}
+    {{ $featured = resources.Get . }}
+  {{ end }}
+{{ end }}
+
+{{ if not (or $featured $featuredURL) }}
+  {{ $images := $page.Resources.ByType "image" }}
+  {{ range slice "*feature*" "*cover*" "*thumbnail*" }}
+    {{ if not $featured }}{{ $featured = $images.GetMatch . }}{{ end }}
+  {{ end }}
+  {{/* Fall back to the first image in the bundle (e.g. journal posts). */}}
+  {{ with $images }}
+    {{ if not $featured }}{{ $featured = index . 0 }}{{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if not $featuredURL }}
+  {{ with $featured }}
+    {{ $featuredURL = .RelPermalink }}
+    {{ if not (or $disableImageOptimization (eq .MediaType.SubType "svg")) }}
+      {{ $featuredURL = (.Resize "1200x").RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* Section fallback: borrow an image from the top child. Prefer the first
+     pinned entry (so the cover reflects the featured work), then the top entry
+     by weight. Recurses; leaf entries have no children, so this terminates. */}}
+{{ if not $featuredURL }}
+  {{ $pinned := partial "portfolio/resolve-pinned.html" $page }}
+  {{ $children := $pinned | append ($page.Pages.ByWeight | complement $pinned) }}
+  {{ with $children }}
+    {{ $featuredURL = partial "portfolio/feature-image.html" (index . 0) }}
+  {{ end }}
+{{ end }}
+
+{{ return $featuredURL }}

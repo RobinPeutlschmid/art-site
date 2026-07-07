@@ -1,0 +1,21 @@
+{{/* Resolves a page's `pinned` front-matter list into a slice of pages.
+
+     `pinned` is a list of page refs, e.g.:
+       pinned:
+         - /journal/TheGardenBath
+         - /portfolio/films/odraz
+     Refs may point at anything renderable as a card (journal entries,
+     portfolio entries, ...). Unresolvable refs are skipped with a build
+     warning rather than failing the build.
+
+     Expects a Page in context; returns a slice of pages (possibly empty),
+     in the order listed in front matter. */}}
+{{ $pinned := slice }}
+{{ range .Params.pinned }}
+  {{ with site.GetPage . }}
+    {{ $pinned = $pinned | append . }}
+  {{ else }}
+    {{ warnf "portfolio: pinned page %q not found (referenced from %q)" . $.RelPermalink }}
+  {{ end }}
+{{ end }}
+{{ return $pinned }}
