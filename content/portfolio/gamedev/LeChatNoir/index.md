@@ -11,7 +11,7 @@ There's been a murder. You and your purrtner Detective Purrlock are sent to inve
 
 https://nickada.itch.io/lechatnoir
 
-![601](oq9FKn.gif)
+![411](oq9FKn.gif)
 
 ![](gamedev/LeChatNoir/cover.png)
 
