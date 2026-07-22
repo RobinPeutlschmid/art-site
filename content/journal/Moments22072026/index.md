@@ -10,5 +10,4 @@ tags:
 ![](IMG_1932.jpg)
 ![](IMG_1947.jpg)
 ![](IMG_1979.jpg)
-![](IMG_1947%201.jpg)
 ![](IMG_1953.jpg)
