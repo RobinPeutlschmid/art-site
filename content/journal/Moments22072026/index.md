@@ -1,5 +1,5 @@
 ---
-title: Moments From my Life 220726
+title: Moments 220726
 date: 2026-07-22
 draft: false
 tags:
