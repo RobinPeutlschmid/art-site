@@ -22,7 +22,6 @@ tags:
 
 ![](IMG_2083.jpg)
 
-![](MVI_2079.avi)
 
 ![](IMG_2063.jpg)
 
