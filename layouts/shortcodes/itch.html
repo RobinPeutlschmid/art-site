@@ -1,0 +1,22 @@
+{{- /*
+  itch.io embed widget.
+  Usage:
+    {{< itch id="4792302" url="https://nickada.itch.io/no-time-to-spare" title="No Time To Spare by NICK ADA, robin, RENÉ" >}}
+
+  Only `id` is required. `url` and `title` populate the fallback link shown
+  before the iframe loads (and for anyone without JS). Colors default to the
+  site's slate palette but can be overridden per-embed.
+*/ -}}
+{{- $id := .Get "id" -}}
+{{- $url := .Get "url" -}}
+{{- $title := .Get "title" | default "Play on itch.io" -}}
+{{- $width := .Get "width" | default "552" -}}
+{{- $height := .Get "height" | default "167" -}}
+{{- $bg := .Get "bg_color" | default "000000" -}}
+{{- $fg := .Get "fg_color" | default "97bfb5" -}}
+{{- $link := .Get "link_color" | default "44c174" -}}
+{{- $border := .Get "border_color" | default "333333" -}}
+{{- if not $id -}}
+  {{- errorf "itch shortcode: missing required `id` parameter (%s)" .Position -}}
+{{- end -}}
+<iframe frameborder="0" src="https://itch.io/embed/{{ $id }}?linkback=true&amp;bg_color={{ $bg }}&amp;fg_color={{ $fg }}&amp;link_color={{ $link }}&amp;border_color={{ $border }}" width="{{ $width }}" height="{{ $height }}" style="max-width:100%">{{ with $url }}<a href="{{ . }}">{{ $title }}</a>{{ else }}{{ $title }}{{ end }}</iframe>
