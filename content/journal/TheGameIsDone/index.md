@@ -9,6 +9,9 @@ tags:
 ---
 We have finished our gamejam submission for the GMTK Jam 2026! It's a thrilling adventure experience where you have to escape from a building where everything has it's clock. People, animals and even the building. 
 
+Here's the link:
+https://nickada.itch.io/no-time-to-spare
+
 Description:
 
 This Building is Rotten. Everybody's clock is ticking. Everything will burn.
