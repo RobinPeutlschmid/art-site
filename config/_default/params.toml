@@ -17,7 +17,8 @@ enableStructuredBreadcrumbs = false
 
 replyByEmail = false
 
-# mainSections = ["section1", "section2"]
+# Homepage "Recent" list pulls only from these sections (excludes portfolio)
+mainSections = ["journal"]
 # robots = ""
 
 disableImageOptimization = false
