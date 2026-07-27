@@ -7,7 +7,7 @@ tags:
   - blender
   - news
 ---
-We have finished our gamejam submission for the GMTK Jam 2026! It's a thrilling adventure experience where you have to escape from a building where everything has it's clock. People, animals and even the building.  
+We have finished our gamejam submission for the GMTK Jam 2026! It's a thrilling adventure experience where you have to escape from a building where everything has its clock. People, animals and even the building.  
 
 {{< itch id="4792302" url="https://nickada.itch.io/no-time-to-spare" title="No Time To Spare by NICK ADA, robin, RENÉ" >}}
 
